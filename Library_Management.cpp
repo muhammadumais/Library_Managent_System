@@ -9,12 +9,14 @@ class Book{
   static int temp;
   string name;
   string author;
+  string status;
 
   public: 
     Book(){
       id = temp + 1;
       name = "";
       author = "";
+      status = "Unassigned";
       temp++;
     }
 
@@ -22,6 +24,7 @@ class Book{
       id = temp + 1;
       name = namee;
       author = authorr;
+      status = "Unassigned";
       temp++;
     }
 
@@ -64,18 +67,41 @@ class Library{
 
   string name;
   string location;
+  int capacity;
   vector <Book*> books;
-
+public: 
   Library(){
     name = "";
     location = "";
+    capacity = 10;
     books.push_back(new Book("Library_Intro", "N/A"));
   }
+
+  string get_name(){
+      return name;
+  }
+  
+  string get_location(){
+      return location;
+  }
+
+  int get_capacity(){
+    return capacity;
+  }
+
+  int get_filled(){
+    return books.size();
+  }
+
 
   void add_book(){
     Book* temp;
     fill_book_data(temp);
     books.push_back(temp);
+  }
+
+  void remove_book(int i){
+    books.erase(books.begin() + i);
   }
 
 };

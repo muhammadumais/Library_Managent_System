@@ -17,7 +17,6 @@ using namespace std;
 #define MEMBER_H
 #endif
 
-
 class Library{
 
   string name;
@@ -59,6 +58,17 @@ class Library{
     void remove_book(int i){
       books.erase(books.begin() + i);
     }
+    void add_member(){
+      Member* temp;
+      fill_member_data(temp);
+      members.push_back(temp);
+    }
+
+    void remove_member(int i){
+      members.erase(books.begin() + i);
+    }
 
 };
+
+
 #endif

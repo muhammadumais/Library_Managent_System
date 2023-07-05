@@ -2,7 +2,6 @@
 #include<vector>
 #include<string>
 
-#include "library.h"
 
 
 #ifndef MEMBER_H
@@ -31,6 +30,18 @@ class Member{
       cell_no = cell;
     }
 
+    void set_cell_no(string cell_noo){
+      cell_no = cell_noo;
+    }
+
+    void set_name(string namee){
+      name = namee;
+    }
+
+    string get_name(){
+      return name;
+    }
+
     int find(string name){
       for(auto book : bag){
         if(book->get_name() == name){
@@ -50,4 +61,17 @@ class Member{
   }
     
 };
+
+
+void fill_member_data(Member* member){
+  string temp;
+  cout << "----------Enter Member Data-----------" << endl << endl;
+  cout << "Enter Name : ";
+  getline(cin, temp);
+  member->set_name(temp);
+  cout << "Enter Cell No : ";
+  getline(cin, temp);
+  member->set_cell_noo(temp);
+}
+
 #endif

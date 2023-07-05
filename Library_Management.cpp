@@ -131,7 +131,7 @@ class Member{
       bag.erase(bag.begin() + find(name));
     }
     else{
-      cout << "Book Not Found For Returning";
+      cout << "Book is Not Found For Returning";
     }
   }
     

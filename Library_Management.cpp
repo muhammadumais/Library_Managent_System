@@ -9,14 +9,12 @@ class Book{
   static int temp;
   string name;
   string author;
-  string status;
 
   public: 
     Book(){
       id = temp + 1;
       name = "";
       author = "";
-      status = "Unassigned";
       temp++;
     }
 
@@ -24,7 +22,6 @@ class Book{
       id = temp + 1;
       name = namee;
       author = authorr;
-      status = "Unassigned";
       temp++;
     }
 
@@ -69,39 +66,73 @@ class Library{
   string location;
   int capacity;
   vector <Book*> books;
-public: 
-  Library(){
-    name = "";
-    location = "";
-    capacity = 10;
-    books.push_back(new Book("Library_Intro", "N/A"));
-  }
+  vector <Member*> members;
+  public: 
+    Library(){
+      name = "";
+      location = "";
+      capacity = 10;
+      books.push_back(new Book("Library_Intro", "N/A"));
+    }
 
-  string get_name(){
-      return name;
-  }
-  
-  string get_location(){
-      return location;
-  }
+    string get_name(){
+        return name;
+    }
+    
+    string get_location(){
+        return location;
+    }
 
-  int get_capacity(){
-    return capacity;
+    int get_capacity(){
+      return capacity;
+    }
+
+    int get_filled(){
+      return books.size();
+    }
+
+
+    void add_book(){
+      Book* temp;
+      fill_book_data(temp);
+      books.push_back(temp);
+    }
+
+    void remove_book(int i){
+      books.erase(books.begin() + i);
+    }
+
+};
+
+
+
+class Member{
+  string name;
+  string cell_no;
+  vector <Book*> bag;
+
+  public:
+    Member(string namee, string cell){
+      name = namee;
+      cell_no = cell;
+    }
+
+    int find(string name){
+      for(auto book : bag){
+        if(book->get_name() == name){
+          return book->get_id();
+        }
+      }
+      return -1;
+    }
+
+  void turn(string name){
+    if(find(name) + 1){
+      bag.erase(bag.begin() + find(name));
+    }
+    else{
+      cout << "Book Not Found For Returning";
+    }
   }
-
-  int get_filled(){
-    return books.size();
-  }
-
-
-  void add_book(){
-    Book* temp;
-    fill_book_data(temp);
-    books.push_back(temp);
-  }
-
-  void remove_book(int i){
-    books.erase(books.begin() + i);
-  }
-
+    
 };

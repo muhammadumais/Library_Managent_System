@@ -5,18 +5,6 @@
 using namespace std;
 
 
-#ifndef BOOK_H
-#define BOOK_H
-
-#ifndef MEMBER_H
-#define MEMBER_H
-#endif
-
-#ifndef LIBRARY_H
-#define LIBRARY_H
-#endif
-
-
 class Book{
   int id;
   static int temp;
@@ -63,14 +51,13 @@ class Book{
 
 int Book :: temp = 0;
 
-void fill_book_data(Book* book){
+void fill_book_data(Book &book){
   string temp;
   cout << "----------Enter Book Data-----------" << endl << endl;
   cout << "Enter Name : ";
   getline(cin, temp);
-  book->set_name(temp);
+  book.set_name(temp);
   cout << "Enter Author : ";
   getline(cin, temp);
-  book->set_author(temp);
+  book.set_author(temp);
 }
-#endif

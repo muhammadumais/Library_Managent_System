@@ -3,20 +3,6 @@
 #include<string>
 
 
-
-#ifndef MEMBER_H
-#define MEMBER_H
-
-#ifndef LIBRARY_H
-#define LIBRARY_H
-#endif
-#ifndef BOOK_h
-#define BOOK_h
-#endif
-
-
-
-
 using namespace std;
 
 class Member{
@@ -25,6 +11,11 @@ class Member{
   vector <Book*> bag;
 
   public:
+
+    Member(){
+      name = "";
+      cell_no = "";  
+    }
     Member(string namee, string cell){
       name = namee;
       cell_no = cell;
@@ -63,15 +54,14 @@ class Member{
 };
 
 
-void fill_member_data(Member* member){
+void fill_member_data(Member &member){
   string temp;
   cout << "----------Enter Member Data-----------" << endl << endl;
   cout << "Enter Name : ";
   getline(cin, temp);
-  member->set_name(temp);
+  member.set_name(temp);
   cout << "Enter Cell No : ";
   getline(cin, temp);
-  member->set_cell_noo(temp);
+  member.set_cell_no(temp);
 }
 
-#endif
